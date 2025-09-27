@@ -9,6 +9,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
@@ -42,6 +43,12 @@ final class User extends Authenticatable implements FilamentUser, HasAvatar, Has
         'password',
         'remember_token',
     ];
+
+    /** @return BelongsToMany<Community> */
+    public function communities(): BelongsToMany
+    {
+        return $this->belongsToMany(Community::class)->withTimestamps();
+    }
 
     public function canAccessPanel(Panel $panel): bool
     {
