@@ -40,10 +40,8 @@ como base para estudos, testes técnicos ou evolução futura.
 8. **Capacidade analítica** – explicação dos trade-offs escolhidos.
 9. **Painel Administrativo** - uso do FilamentPHP para gerenciar subreddits e posts.
 
-
 > [!WARNING]
 > Não nos importamos com o uso de I.A desde que você saiba justificar suas decisões. O principal é ter certeza da entrega feita e isso será questionado durante a avaliação.
-
 
 > [!WARNING]
 > Não será permitido uso de Plugins externos fora o `MediaLibrary` para agilizar a implementação de uma feature.

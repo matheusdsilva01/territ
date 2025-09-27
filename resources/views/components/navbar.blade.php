@@ -1,2 +1,1 @@
-<header class="sticky top-0">
-</header>
+<header class="sticky top-0"></header>
