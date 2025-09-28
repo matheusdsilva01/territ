@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Filament\Admin\Resources\Communities\Pages;
 
 use App\Filament\Admin\Resources\Communities\CommunityResource;
-use App\Filament\Admin\Resources\Users\UserResource;
 use BackedEnum;
 use Filament\Actions\AttachAction;
 use Filament\Actions\BulkActionGroup;

@@ -21,19 +21,19 @@ final class Comment extends Model
         'comment_parent_id',
     ];
 
-    /** @return BelongsTo<User> */
+    /** @return BelongsTo<User, $this> */
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    /** @return BelongsTo<Post> */
+    /** @return BelongsTo<Post, $this> */
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
 
-    /** @return BelongsTo<Comment> */
+    /** @return BelongsTo<Comment, $this> */
     public function commentParent(): BelongsTo
     {
         return $this->belongsTo(self::class, 'comment_parent_id');

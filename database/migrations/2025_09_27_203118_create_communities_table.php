@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('communities', function (Blueprint $table) {
+        Schema::create('communities', function (Blueprint $table): void {
             $table->uuid('id')->primary();
             $table->string('title');
             $table->string('description');

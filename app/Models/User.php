@@ -10,6 +10,7 @@ use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
@@ -45,7 +46,7 @@ final class User extends Authenticatable implements FilamentUser, HasAvatar, Has
         'remember_token',
     ];
 
-    /** @return BelongsToMany<Community> */
+    /** @return BelongsToMany<Community, $this, Pivot> */
     public function communities(): BelongsToMany
     {
         return $this->belongsToMany(Community::class)->withTimestamps();
