@@ -25,6 +25,12 @@ final class Post extends Model
         'community_id',
     ];
 
+    /** @return BelongsTo<User, $this> */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
     /** @return BelongsTo<Community, $this> */
     public function community(): BelongsTo
     {
