@@ -7,6 +7,7 @@ namespace App\Filament\Admin\Resources\Communities;
 use App\Filament\Admin\Resources\Communities\Pages\CreateCommunity;
 use App\Filament\Admin\Resources\Communities\Pages\EditCommunity;
 use App\Filament\Admin\Resources\Communities\Pages\ListCommunities;
+use App\Filament\Admin\Resources\Communities\Pages\ManageCommunityPosts;
 use App\Filament\Admin\Resources\Communities\Pages\ManageCommunityUsers;
 use App\Filament\Admin\Resources\Communities\Schemas\CommunityForm;
 use App\Filament\Admin\Resources\Communities\Tables\CommunitiesTable;
@@ -42,6 +43,7 @@ final class CommunityResource extends Resource
         return $page->generateNavigationItems([
             EditCommunity::class,
             ManageCommunityUsers::class,
+            ManageCommunityPosts::class,
         ]);
     }
 
@@ -59,6 +61,7 @@ final class CommunityResource extends Resource
             'create' => CreateCommunity::route('/create'),
             'edit' => EditCommunity::route('/{record}/edit'),
             'users' => ManageCommunityUsers::route('/{record}/users'),
+            'posts' => ManageCommunityPosts::route('/{record}/posts'),
         ];
     }
 }
