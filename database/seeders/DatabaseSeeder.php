@@ -20,17 +20,18 @@ final class DatabaseSeeder extends Seeder
         if (app()->isLocal()) {
             User::factory()->admin()->create();
         }
+
         User::factory(10)->create();
         Community::factory(5)->create();
         User::query()->limit(2)->get()->each(function (User $user): void {
-            $user->communities()->attach(Community::inRandomOrder()->limit(3)->get());
+            $user->communities()->attach(Community::query()->inRandomOrder()->limit(3)->get());
         });
 
         $community = Community::query()->first();
         Post::factory(10)->for($community)->create();
         Comment::factory(5)->create([
-            'post_id' => Post::inRandomOrder()->first()->id,
-            'author_id' => User::inRandomOrder()->first()->id,
+            'post_id' => Post::query()->inRandomOrder()->first()->id,
+            'author_id' => User::query()->inRandomOrder()->first()->id,
         ]);
     }
 }

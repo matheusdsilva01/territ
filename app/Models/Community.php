@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 final class Community extends Model
 {
@@ -24,13 +25,13 @@ final class Community extends Model
         'icon_img',
     ];
 
-    /** @return BelongsToMany<User> */
+    /** @return BelongsToMany<User, $this, Pivot> */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
 
-    /** @return HasMany<Post> */
+    /** @return HasMany<Post, $this> */
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);

@@ -25,13 +25,13 @@ final class Post extends Model
         'community_id',
     ];
 
-    /** @return BelongsTo<Community> */
+    /** @return BelongsTo<Community, $this> */
     public function community(): BelongsTo
     {
         return $this->belongsTo(Community::class);
     }
 
-    /** @return HasMany<Comment> */
+    /** @return HasMany<Comment, $this> */
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
