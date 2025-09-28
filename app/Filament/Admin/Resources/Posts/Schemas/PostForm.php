@@ -24,6 +24,7 @@ final class PostForm
                     ->required(),
                 Select::make('community_id')
                     ->relationship('community', 'title')
+                    ->default(request()->query('community_id') ?? null)
                     ->required(),
                 Textarea::make('content')
                     ->columnSpanFull()

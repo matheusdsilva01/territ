@@ -25,12 +25,16 @@ final class CommunitiesTable
                     ->label('Icon')
                     ->circular(),
                 TextColumn::make('description')
-                    ->limit(50),
+                    ->limit(40),
                 TextColumn::make('created_at')
                     ->dateTime(),
                 TextColumn::make('users_count')
                     ->label('Qty Members')
                     ->counts('users')
+                    ->sortable(),
+                TextColumn::make('posts_count')
+                    ->label('Qty Posts')
+                    ->counts('posts')
                     ->sortable(),
             ])
             ->filters([
