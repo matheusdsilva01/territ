@@ -2,41 +2,29 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Admin\Resources\Communities\RelationManagers;
+namespace App\Filament\Admin\Resources\Communities\Pages;
 
+use App\Filament\Admin\Resources\Communities\CommunityResource;
+use App\Filament\Admin\Resources\Users\UserResource;
+use BackedEnum;
 use Filament\Actions\AttachAction;
 use Filament\Actions\BulkActionGroup;
-use Filament\Actions\CreateAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\DetachAction;
 use Filament\Actions\DetachBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Schemas\Schema;
+use Filament\Resources\Pages\ManageRelatedRecords;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-final class UsersRelationManager extends RelationManager
+final class ManageCommunityUsers extends ManageRelatedRecords
 {
+    protected static string $resource = CommunityResource::class;
+
     protected static string $relationship = 'users';
 
-    public function form(Schema $schema): Schema
-    {
-        return $schema
-            ->components([
-                TextInput::make('name')
-                    ->required(),
-                TextInput::make('email')
-                    ->label('Email address')
-                    ->email()
-                    ->required(),
-                TextInput::make('username')
-                    ->required(),
-            ]);
-    }
+    protected static ?string $navigationLabel = 'Community Users';
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
     public function table(Table $table): Table
     {
