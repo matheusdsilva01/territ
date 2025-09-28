@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Community;
 use App\Models\Post;
 use App\Models\User;
@@ -27,5 +28,9 @@ final class DatabaseSeeder extends Seeder
 
         $community = Community::query()->first();
         Post::factory(10)->for($community)->create();
+        Comment::factory(5)->create([
+            'post_id' => Post::inRandomOrder()->first()->id,
+            'author_id' => User::inRandomOrder()->first()->id,
+        ]);
     }
 }
