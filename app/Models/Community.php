@@ -15,6 +15,7 @@ final class Community extends Model
 {
     /** @use HasFactory<CommunityFactory> */
     use HasFactory;
+
     use HasUuids;
 
     protected $fillable = [

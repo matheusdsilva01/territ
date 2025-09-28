@@ -7,11 +7,13 @@ namespace App\Filament\Admin\Resources\Communities;
 use App\Filament\Admin\Resources\Communities\Pages\CreateCommunity;
 use App\Filament\Admin\Resources\Communities\Pages\EditCommunity;
 use App\Filament\Admin\Resources\Communities\Pages\ListCommunities;
-use App\Filament\Admin\Resources\Communities\RelationManagers\UsersRelationManager;
+use App\Filament\Admin\Resources\Communities\Pages\ManageCommunityUsers;
 use App\Filament\Admin\Resources\Communities\Schemas\CommunityForm;
 use App\Filament\Admin\Resources\Communities\Tables\CommunitiesTable;
 use App\Models\Community;
 use BackedEnum;
+use Filament\Pages\Enums\SubNavigationPosition;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -21,7 +23,9 @@ final class CommunityResource extends Resource
 {
     protected static ?string $model = Community::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedChatBubbleLeftRight;
+
+    protected static ?SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function form(Schema $schema): Schema
     {
@@ -33,10 +37,18 @@ final class CommunityResource extends Resource
         return CommunitiesTable::configure($table);
     }
 
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            EditCommunity::class,
+            ManageCommunityUsers::class,
+        ]);
+    }
+
     public static function getRelations(): array
     {
         return [
-            UsersRelationManager::class,
+            //
         ];
     }
 
@@ -46,6 +58,7 @@ final class CommunityResource extends Resource
             'index' => ListCommunities::route('/'),
             'create' => CreateCommunity::route('/create'),
             'edit' => EditCommunity::route('/{record}/edit'),
+            'users' => ManageCommunityUsers::route('/{record}/users'),
         ];
     }
 }
