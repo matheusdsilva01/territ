@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Models;
+
+use Database\Factories\CommentFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+final class Comment extends Model
+{
+    /** @use HasFactory<CommentFactory> */
+    use HasFactory;
+
+    protected $fillable = [
+        'content',
+        'author_id',
+        'post_id',
+        'comment_parent_id',
+    ];
+
+    /** @return BelongsTo<User> */
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    /** @return BelongsTo<Post> */
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
+
+    /** @return BelongsTo<Comment> */
+    public function commentParent(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'comment_parent_id');
+    }
+}
