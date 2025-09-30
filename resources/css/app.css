@@ -8,15 +8,18 @@
 @source '../**/*.js';
 
 @variant dark (&:where(.dark, .dark *));
+
 @theme {
     --font-primary: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
     --font-secondary: 'Cal Sans', ui-sans-serif, system-ui, sans-serif;
 
     --text-3xs: 0.75rem; /* 12px */
-    --text-2xs: 1rem; /* 16px */
-    --text-xs: 1.125rem; /* 18px */
+    --text-2xs: 0.875rem; /* 14px */
+    --text-xs: 1rem; /* 16px */
     --text-sm: 1.25rem; /* 20px */
-    --text-base: 1.5rem; /* 24px */
+    --text-sm--line-height: 1;
+    --text-md: 1.5rem; /* 24px */
+    --text-md--line-height: 1;
     --text-lg: 2rem; /* 32px */
     --text-xl: 2.5rem; /* 40px */
     --text-2xl: 2.725rem; /* 44px */
@@ -24,13 +27,20 @@
     --text-4xl: 4rem; /* 64px */
     --text-display: 5rem; /* 80px */
     --text-giant: 6rem; /* 96px */
+    --text-base--line-height: 1;
+
+    --spacing-xs: 150%;
 
     --color-helper-outline: #2c2c2d;
     --color-elevation-surface: #fbfbff;
     --color-elevation-surface-dark: #09090a;
     --color-elevation-01dp: #0f0f10;
+    --color-elevation-02dp: #131314;
     --color-outline-dark: #2c2c2d;
     --color-text-high: #fdfdfd;
     --color-icon-medium: #9c9c9c;
+    --color-c-medium: #9c9c9c;
     --color-indigo-primary: #4f39f6;
+    --color-brand-primary: #3895ff;
+    --color-lime-primary: #a5e412;
 }
