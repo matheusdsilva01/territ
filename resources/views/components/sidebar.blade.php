@@ -5,6 +5,8 @@ declare(strict_types=1);
 ?>
 
 @php
+    use App\Filament\Guess\Pages\Community;
+    use App\Filament\Guess\Pages\Home;
     use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
     use Filament\Schemas\Components\Icon;
 @endphp
@@ -16,18 +18,24 @@ declare(strict_types=1);
             {{ Icon::make('panel')->icon(LucideIcon::PanelsTopLeft)->color('inherit') }}
         </div>
         <section class="flex flex-col gap-11">
-            <div class="flex cursor-pointer items-center justify-between p-4">
+            <div class="relative isolate flex cursor-pointer items-center justify-between p-4">
                 <div class="flex items-center gap-3">
                     {{ Icon::make('home')->icon(LucideIcon::Home)->color('inherit') }}
-                    <p>Home</p>
+                    <a href="{{ route(Home::getRouteName()) }}">
+                        <span class="absolute inset-0"></span>
+                        Home
+                    </a>
                 </div>
             </div>
             <div class="flex flex-col gap-4">
                 <p>Minhas comunidades</p>
-                <div class="flex cursor-pointer items-center justify-between p-4">
+                <div class="relative isolate flex cursor-pointer items-center justify-between p-4">
                     <div class="flex items-center gap-3">
                         {{ Icon::make('heroicon-o-wrench')->color('inherit') }}
-                        <p>Auto peça jacaré</p>
+                        <a href="{{ route(Community::getRouteName()) }}" class="relative">
+                            <span class="absolute inset-0"></span>
+                            Auto peça jacaré
+                        </a>
                     </div>
                     <div
                         class="font-secondary bg-indigo-primary/15 border-indigo-primary/30 h-fit rounded-full px-4 py-0.5"
@@ -36,9 +44,12 @@ declare(strict_types=1);
                     </div>
                 </div>
                 <div class="flex cursor-pointer items-center justify-between p-4">
-                    <div class="flex items-center gap-3">
+                    <div class="relative isolate flex items-center gap-3">
                         {{ Icon::make('heroicon-o-scissors')->color('inherit') }}
-                        <p>Costureiras graça e paz</p>
+                        <a href="{{ route(Community::getRouteName()) }}">
+                            <span class="absolute inset-0"></span>
+                            Costureiras graça e paz
+                        </a>
                     </div>
                     <div
                         class="font-secondary bg-indigo-primary/15 border-indigo-primary/30 h-fit rounded-full px-4 py-0.5"
