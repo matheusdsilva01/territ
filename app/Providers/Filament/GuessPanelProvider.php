@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Guess\Pages\Community;
 use App\Filament\Guess\Pages\Home;
 use App\Filament\Shared\Pages\LoginPage;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -37,6 +38,7 @@ final class GuessPanelProvider extends PanelProvider
             })
             ->pages([
                 Home::class,
+                Community::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
             ->discoverWidgets(in: app_path('Filament/Guess/Widgets'), for: 'App\Filament\Guess\Widgets')

@@ -16,6 +16,7 @@
     --text-3xs: 0.75rem; /* 12px */
     --text-2xs: 0.875rem; /* 14px */
     --text-xs: 1rem; /* 16px */
+    --text-xs--line-height: 1;
     --text-sm: 1.25rem; /* 20px */
     --text-sm--line-height: 1;
     --text-md: 1.5rem; /* 24px */
