@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 ?>
@@ -8,20 +7,20 @@ declare(strict_types=1);
     <section class="flex flex-col gap-8">
         <div class="flex items-center justify-between text-white">
             <img src="{{ asset('sidebar-logo.png') }}" class="w-28" alt="sidebar logo" />
-            {{ \Filament\Schemas\Components\Icon::make('heroicon-o-window')->color('inherit') }}
+            {{ Icon::make('panel')->icon(LucideIcon::PanelsTopLeft)->color('inherit') }}
         </div>
         <section class="flex flex-col gap-11">
             <div class="flex cursor-pointer items-center justify-between p-4">
-                <div class="flex gap-3">
-                    {{ \Filament\Schemas\Components\Icon::make('heroicon-o-home')->color('inherit') }}
+                <div class="flex items-center gap-3">
+                    {{ Icon::make('home')->icon(LucideIcon::Home)->color('inherit') }}
                     <p>Home</p>
                 </div>
             </div>
             <div class="flex flex-col gap-4">
                 <p>Minhas comunidades</p>
                 <div class="flex cursor-pointer items-center justify-between p-4">
-                    <div class="flex gap-3">
-                        {{ \Filament\Schemas\Components\Icon::make('heroicon-o-wrench')->color('inherit') }}
+                    <div class="flex items-center gap-3">
+                        {{ Icon::make('heroicon-o-wrench')->color('inherit') }}
                         <p>Auto peça jacaré</p>
                     </div>
                     <div
@@ -31,8 +30,8 @@ declare(strict_types=1);
                     </div>
                 </div>
                 <div class="flex cursor-pointer items-center justify-between p-4">
-                    <div class="flex gap-3">
-                        {{ \Filament\Schemas\Components\Icon::make('heroicon-o-scissors')->color('inherit') }}
+                    <div class="flex items-center gap-3">
+                        {{ Icon::make('heroicon-o-scissors')->color('inherit') }}
                         <p>Costureiras graça e paz</p>
                     </div>
                     <div
