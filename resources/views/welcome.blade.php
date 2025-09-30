@@ -1,12 +1,9 @@
-<x-layouts.guest>
-    <main class="mx-auto">
-        <div>
-            <!-- Left Sidebar -->
-            <x-sidebar />
-            <!-- Feed -->
-            <x-feed>
-                <!-- Posts -->
-            </x-feed>
-        </div>
-    </main>
-</x-layouts.guest>
+<?php
+
+declare(strict_types=1);
+
+?>
+
+<section class="mx-auto"></section>
+
+<?php
