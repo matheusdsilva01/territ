@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
+use App\Filament\Guess\Pages\Home;
 use App\Filament\Shared\Pages\LoginPage;
-use App\Livewire\Welcome;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -36,7 +36,7 @@ final class GuessPanelProvider extends PanelProvider
                 Route::get('/login', LoginPage::class);
             })
             ->pages([
-                Welcome::class,
+                Home::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
             ->discoverWidgets(in: app_path('Filament/Guess/Widgets'), for: 'App\Filament\Guess\Widgets')
