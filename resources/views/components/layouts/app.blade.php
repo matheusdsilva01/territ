@@ -51,7 +51,7 @@ declare(strict_types=1);
         @vite('resources/css/app.css')
     </head>
     <body
-        class="font-primary bg-elevation-surface text-text-high dark:bg-elevation-surface-dark dark:text-text-high-dark min-h-full"
+        class="font-primary bg-elevation-surface text-text-high dark:bg-elevation-surface-dark dark:text-text-high-dark min-h-full leading-none"
     >
         <x-guess-container-layout>
             {{ $slot }}

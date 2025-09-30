@@ -1,7 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 ?>
+
+@php
+    use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
+    use Filament\Schemas\Components\Icon;
+@endphp
 
 <aside class="bg-elevation-01dp border-helper-outline text-icon-medium min-w-[352px] border-r p-8">
     <section class="flex flex-col gap-8">
