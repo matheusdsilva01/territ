@@ -1,11 +1,13 @@
 @import 'tailwindcss';
 @import '../../public/fonts/satoshi/satoshi.css';
+@import '../../vendor/filament/actions/resources/css/index.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
+@variant dark (&:where(.dark, .dark *));
 @theme {
     --font-primary: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
     --font-secondary: 'Cal Sans', ui-sans-serif, system-ui, sans-serif;
@@ -22,4 +24,13 @@
     --text-4xl: 4rem; /* 64px */
     --text-display: 5rem; /* 80px */
     --text-giant: 6rem; /* 96px */
+
+    --color-helper-outline: #2c2c2d;
+    --color-elevation-surface: #fbfbff;
+    --color-elevation-surface-dark: #09090a;
+    --color-elevation-01dp: #0f0f10;
+    --color-outline-dark: #2c2c2d;
+    --color-text-high: #fdfdfd;
+    --color-icon-medium: #9c9c9c;
+    --color-indigo-primary: #4f39f6;
 }
