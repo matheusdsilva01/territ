@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire;
+namespace App\Filament\Guess\Pages;
 
 use App\Filament\Shared\Pages\GuessBasePage;
 
-final class Welcome extends GuessBasePage
+final class Home extends GuessBasePage
 {
     protected string $view = 'welcome';
 }
