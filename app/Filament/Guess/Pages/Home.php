@@ -8,5 +8,7 @@ use App\Filament\Shared\Pages\GuessBasePage;
 
 final class Home extends GuessBasePage
 {
+    protected static ?int $navigationSort = -2;
+
     protected string $view = 'welcome';
 }
