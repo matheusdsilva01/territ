@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers\Filament;
 
-use App\Filament\Guess\Pages\Community;
-use App\Filament\Guess\Pages\Home;
-use App\Filament\Guess\Pages\Post;
+use App\Filament\Guest\Pages\Community;
+use App\Filament\Guest\Pages\Home;
+use App\Filament\Guest\Pages\Post;
 use App\Filament\Shared\Pages\LoginPage;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -22,18 +22,18 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-final class GuessPanelProvider extends PanelProvider
+final class GuestPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('guess')
+            ->id('guest')
             ->path('')
             ->colors([
                 'primary' => Color::Purple,
             ])
-            ->discoverResources(in: app_path('Filament/Guess/Resources'), for: 'App\Filament\Guess\Resources')
-            ->discoverPages(in: app_path('Filament/Guess/Pages'), for: 'App\Filament\Guess\Pages')
+            ->discoverResources(in: app_path('Filament/Guest/Resources'), for: 'App\Filament\Guest\Resources')
+            ->discoverPages(in: app_path('Filament/Guest/Pages'), for: 'App\Filament\Guest\Pages')
             ->routes(function (): void {
                 Route::get('/login', LoginPage::class);
             })
@@ -43,7 +43,7 @@ final class GuessPanelProvider extends PanelProvider
                 Post::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
-            ->discoverWidgets(in: app_path('Filament/Guess/Widgets'), for: 'App\Filament\Guess\Widgets')
+            ->discoverWidgets(in: app_path('Filament/Guest/Widgets'), for: 'App\Filament\Guest\Widgets')
             ->widgets([])
             ->middleware([
                 EncryptCookies::class,

@@ -6,7 +6,7 @@ namespace App\Filament\Shared\Pages;
 
 use Filament\Pages\Page;
 
-abstract class GuessBasePage extends Page
+abstract class GuestBasePage extends Page
 {
     public bool $sidebar = false;
 

@@ -8,7 +8,7 @@ declare(strict_types=1);
     use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
     use Filament\Actions\Action;
     use Filament\Schemas\Components\Icon;
-    use App\Filament\Guess\Pages\Post;
+    use App\Filament\Guest\Pages\Post;
 @endphp
 
 <section class="mx-auto flex flex-col gap-11 px-8 py-6">
