@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 ?>
+
 @php
     use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
     use Filament\Schemas\Components\Icon;
@@ -76,4 +77,5 @@ declare(strict_types=1);
         @endforeach
     </div>
 @endif
-<?php 
+
+<?php

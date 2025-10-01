@@ -11,8 +11,12 @@ final class PostComment extends Component
 {
     public bool $hasReplies = true;
 
+    /** @var array<int, array{isReply: bool, replies: $this}> */
     public array $replies = [];
 
+    /**
+     * @param  array<int, array{isReply: bool, replies: $this}>  $replies
+     */
     public function __construct(
         array $replies = [],
         public bool $isReply = false,
