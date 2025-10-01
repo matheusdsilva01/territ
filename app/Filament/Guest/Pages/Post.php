@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Guess\Pages;
+namespace App\Filament\Guest\Pages;
 
-use App\Filament\Shared\Pages\GuessBasePage;
+use App\Filament\Shared\Pages\GuestBasePage;
 
-final class Post extends GuessBasePage
+final class Post extends GuestBasePage
 {
     /** @var array<int, array{isReply: bool, replies: ?array<int, array{isReply: bool, replies: null}>}> */
     public array $replies = [
@@ -18,5 +18,5 @@ final class Post extends GuessBasePage
         ['isReply' => false, 'replies' => null],
     ];
 
-    protected string $view = 'filament.guess.pages.post';
+    protected string $view = 'filament.guest.pages.post';
 }

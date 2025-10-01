@@ -5,8 +5,8 @@ declare(strict_types=1);
 ?>
 
 @php
-    use App\Filament\Guess\Pages\Community;
-    use App\Filament\Guess\Pages\Home;
+    use App\Filament\Guest\Pages\Community;
+    use App\Filament\Guest\Pages\Home;
     use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
     use Filament\Schemas\Components\Icon;
 @endphp

@@ -7,10 +7,10 @@ namespace App\View\Components;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-final class GuessContainerLayout extends Component
+final class GuestContainerLayout extends Component
 {
     public function render(): View
     {
-        return view('components.guess-container-layout');
+        return view('components.guest-container-layout');
     }
 }
