@@ -3,10 +3,12 @@
 declare(strict_types=1);
 
 ?>
+
 @php
     use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
     use Filament\Actions\Action;
     use Filament\Schemas\Components\Icon;
+    use App\Filament\Guess\Pages\Post;
 @endphp
 
 <section class="mx-auto flex flex-col gap-11 px-8 py-6">
@@ -42,7 +44,7 @@ declare(strict_types=1);
         <section class="flex flex-col gap-8">
             @for ($i = 0; $i < 5; $i++)
                 <div class="bg-elevation-02dp border-outline-dark flex flex-col gap-4 rounded-xl border px-8 py-4">
-                    <div class="flex flex-col gap-4">
+                    <div class="relative isolate flex flex-col gap-4">
                         <div class="flex items-center gap-2">
                             <img
                                 src="https://cdn-icons-png.flaticon.com/32/10851/10851235.png"
@@ -52,9 +54,10 @@ declare(strict_types=1);
                             <p class="leading-xs">/r/dev</p>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <h2 class="font-secondary text-sm">
+                            <a href="{{ route(Post::getRouteName()) }}" class="font-secondary text-sm">
+                                <span class="absolute inset-0"></span>
                                 How I learn any type of new technology (As a Senior Developer)
-                            </h2>
+                            </a>
                             <p class="leading-xs text-c-medium font-medium">
                                 Recently, I had a task of learning a new tool that I had never used or seen anything
                                 related to, and I thought: why not write about how I learned it? This is the kind of
@@ -93,4 +96,5 @@ declare(strict_types=1);
         </section>
     </section>
 </section>
-<?php 
+
+<?php
