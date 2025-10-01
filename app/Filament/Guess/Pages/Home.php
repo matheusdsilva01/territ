@@ -10,5 +10,5 @@ final class Home extends GuessBasePage
 {
     protected static ?int $navigationSort = -2;
 
-    protected string $view = 'welcome';
+    protected string $view = 'filament.guess.pages.home';
 }
