@@ -6,6 +6,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Guess\Pages\Community;
 use App\Filament\Guess\Pages\Home;
+use App\Filament\Guess\Pages\Post;
 use App\Filament\Shared\Pages\LoginPage;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -39,6 +40,7 @@ final class GuessPanelProvider extends PanelProvider
             ->pages([
                 Home::class,
                 Community::class,
+                Post::class,
             ])
             ->sidebarFullyCollapsibleOnDesktop()
             ->discoverWidgets(in: app_path('Filament/Guess/Widgets'), for: 'App\Filament\Guess\Widgets')
