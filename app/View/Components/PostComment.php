@@ -15,14 +15,14 @@ final class PostComment extends Component
     public array $replies = [];
 
     /**
-     * @param  array<int, array{isReply: bool, replies: $this}>  $replies
+     * @param  ?array<int, array{isReply: bool, replies: $this}>  $replies
      */
     public function __construct(
-        array $replies = [],
+        ?array $replies = [],
         public bool $isReply = false,
     ) {
-        $this->hasReplies = $replies !== [];
-        $this->replies = $replies;
+        $this->hasReplies = $replies !== null && $replies !== [];
+        $this->replies = $replies ?? [];
     }
 
     public function render(): View

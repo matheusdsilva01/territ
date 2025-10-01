@@ -12,12 +12,11 @@ declare(strict_types=1);
 <div class="flex flex-row gap-3 rounded-xl [&+div[data-comment]]:ml-11">
     <div class="relative isolate shrink-0 basis-8">
         <img src="https://cdn-icons-png.flaticon.com/32/10851/10851235.png" alt="logo community" class="block" />
-        <span
-            @class([
-                'bg-helper-outline absolute top-8 right-1/2 left-1/2 h-[calc(100%+(var(--spacing)*8/2))] w-[1px] -translate-x-1/2',
-                'hidden' => ! $hasReplies,
-            ])
-        ></span>
+        @if ($hasReplies)
+            <span
+                class="bg-helper-outline absolute top-8 right-1/2 left-1/2 h-[calc(100%+(var(--spacing)*8/2))] w-[1px] -translate-x-1/2"
+            ></span>
+        @endif
     </div>
     <div class="flex flex-col gap-1">
         <div class="flex items-center gap-3">
