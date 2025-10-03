@@ -45,13 +45,10 @@ declare(strict_types=1);
                 Responder
             </button>
         </section>
-        <section class="bg-elevation-01dp border-outline-dark flex flex-col gap-8 rounded-3xl border p-8">
-            <h2 class="text-md font-secondary">Todas as respostas</h2>
-            <section class="flex flex-col gap-8">
-                @foreach ($replies as $reply)
-                    <x-post-comment :replies="$reply['replies']" :is-reply="false" />
-                @endforeach
-            </section>
-        </section>
+        <x-content-wrapper title="Todas as respostas">
+            @foreach ($replies as $reply)
+                <x-post-comment :replies="$reply['replies']" :is-reply="false" />
+            @endforeach
+        </x-content-wrapper>
     </section>
 </x-layouts.guest>
