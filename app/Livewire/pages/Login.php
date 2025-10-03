@@ -26,21 +26,22 @@ final class Login extends Component
             return;
         }
 
-        $user = User::query()->where('email', '!=', 'admin@admin.com')->first();
-        $this->email = $user->email;
-        $this->password = 'password';
-        $this->remember = true;
+        if (! app()->isProduction()) {
+            $user = User::query()->where('email', '!=', 'admin@admin.com')->first();
+            $this->email = $user->email;
+            $this->password = 'password';
+            $this->remember = true;
+        }
     }
 
-    public function authenticate()
+    public function authenticate(): void
     {
         if (Auth::attempt([
             'email' => $this->email,
             'password' => $this->password,
         ], $this->remember)) {
             session()->regenerate();
-
-            return redirect()->intended(route('home'));
+            $this->redirect(route('home'));
         }
 
         throw ValidationException::withMessages([

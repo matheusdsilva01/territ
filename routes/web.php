@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\AuthController;
 use App\Livewire\pages\Login;
-use App\View\Components\Pages\Community;
-use App\View\Components\Pages\Home;
-use App\View\Components\Pages\Post;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -25,15 +23,8 @@ Route::group(['middleware' => [
     SubstituteBindings::class,
 ]], function (): void {
     Route::get('/login', Login::class)->name('login');
-    Route::post('/logout', function () {
-        auth()->logout();
-
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
-
-        return redirect()->intended(route('home'));
-    })->name('logout');
-    Route::get('/', Home::class)->name('home');
-    Route::get('/community', Community::class)->name('community');
-    Route::get('/post', Post::class)->name('post');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/', fn () => view('components.pages.home'))->name('home');
+    Route::get('/community', fn () => view('components.pages.community'))->name('community');
+    Route::get('/post', fn () => view('components.pages.post'))->name('post');
 });

@@ -13,15 +13,20 @@ declare(strict_types=1);
         <section class="flex flex-col gap-11">
             {{-- sidebar content --}}
             <div class="flex flex-col gap-4">
-                <x-sidebar-item label="Home" href="/" icon="lucide-home" />
+                <x-sidebar-item label="Home" :href="route('home')" icon="lucide-home" />
             </div>
             {{-- sidebar content with title --}}
             <div class="flex flex-col gap-4">
                 <p>Minhas comunidades</p>
-                <x-sidebar-item label="Auto peça jacaré" href="/community" icon="heroicon-o-wrench" helper="+999" />
+                <x-sidebar-item
+                    label="Auto peça jacaré"
+                    :href="route('community')"
+                    icon="heroicon-o-wrench"
+                    helper="+999"
+                />
                 <x-sidebar-item
                     label="Costureiras graça e paz"
-                    href="/community"
+                    :href="route('community')"
                     icon="heroicon-o-scissors"
                     helper="+999"
                 />
