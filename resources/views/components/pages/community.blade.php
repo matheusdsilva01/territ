@@ -4,13 +4,6 @@ declare(strict_types=1);
 
 ?>
 
-@php
-    use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
-    use Filament\Actions\Action;
-    use Filament\Schemas\Components\Icon;
-    use App\Filament\Guest\Pages\Post;
-@endphp
-
 <section class="mx-auto flex flex-col gap-11 px-8 py-6">
     <section class="flex items-center justify-between gap-8">
         <div class="flex gap-4">
@@ -22,11 +15,11 @@ declare(strict_types=1);
                 </p>
                 <div class="flex gap-8">
                     <div class="flex items-center gap-3">
-                        {{ Icon::make('users')->icon(LucideIcon::Users)->color('white') }}
+                        <x-lucide-users class="size-5 text-white" />
                         <p class="leading-xs text-xs">1bi de membros</p>
                     </div>
                     <div class="flex items-center gap-3">
-                        {{ Icon::make('users')->icon(LucideIcon::Users)->color('white') }}
+                        <x-lucide-users class="size-5 text-white" />
                         <p class="leading-xs text-xs">Criado em Jan, 2025</p>
                     </div>
                 </div>
@@ -54,7 +47,7 @@ declare(strict_types=1);
                             <p class="leading-xs">/r/dev</p>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <a href="{{ route(Post::getRouteName()) }}" class="font-secondary text-sm">
+                            <a href="/post" class="font-secondary text-sm">
                                 <span class="absolute inset-0"></span>
                                 How I learn any type of new technology (As a Senior Developer)
                             </a>
@@ -67,29 +60,19 @@ declare(strict_types=1);
                         </div>
                     </div>
                     <div class="flex gap-5">
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('message')
-                                    ->icon(LucideIcon::MessageCircle)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-message-circle class="size-4 text-white" />
                             1
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('like')
-                                    ->icon(LucideIcon::ThumbsUp)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-thumbs-up class="size-4 text-white" />
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('dislike')
-                                    ->icon(LucideIcon::ThumbsDown)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-thumbs-down class="size-4 text-white" />
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2 font-semibold">Responder</button>
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2 font-semibold">
+                            Responder
+                        </button>
                     </div>
                 </div>
             @endfor

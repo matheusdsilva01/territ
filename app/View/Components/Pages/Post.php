@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Guest\Pages;
+namespace App\View\Components\Pages;
 
-use App\Filament\Shared\Pages\GuestBasePage;
+use Illuminate\Contracts\View\View;
+use Livewire\Component;
 
-final class Post extends GuestBasePage
+final class Post extends Component
 {
     /** @var array<int, array{isReply: bool, replies: ?array<int, array{isReply: bool, replies: null}>}> */
     public array $replies = [
@@ -18,5 +19,8 @@ final class Post extends GuestBasePage
         ['isReply' => false, 'replies' => null],
     ];
 
-    protected string $view = 'filament.guest.pages.post';
+    public function render(): View
+    {
+        return view('components.pages.post');
+    }
 }

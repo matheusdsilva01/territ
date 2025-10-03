@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 ?>
 
-@php
-    use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
-    use Filament\Schemas\Components\Icon;
-@endphp
-
 <div class="flex flex-row gap-3 rounded-xl [&+div[data-comment]]:ml-11">
     <div class="relative isolate shrink-0 basis-8">
         <img src="https://cdn-icons-png.flaticon.com/32/10851/10851235.png" alt="logo community" class="block" />
@@ -35,7 +30,7 @@ declare(strict_types=1);
                     Autor
                 </span>
             @endif
-            {{ Icon::make('dots')->icon(LucideIcon::Ellipsis)->extraAttributes(['class' => 'ms-auto text-text-high']) }}
+            <x-lucide-ellipsis class="text-text-high ms-auto size-6" />
         </div>
         <p class="leading-xs text-c-medium font-medium">
             Recently, I had a task of learning a new tool that I had never used or seen anything related to, and I
@@ -43,29 +38,17 @@ declare(strict_types=1);
             from a different perspective. Not the best way, but you can reuse some of the concepts written here.
         </p>
         <div class="flex gap-5">
-            <button class="text-2xs flex items-center gap-2 p-2">
-                {{
-                    Icon::make('message')
-                        ->icon(LucideIcon::MessageCircle)
-                        ->color('white')
-                }}
+            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                <x-lucide-message-circle class="size-4 text-white" />
                 1
             </button>
-            <button class="text-2xs flex items-center gap-2 p-2">
-                {{
-                    Icon::make('like')
-                        ->icon(LucideIcon::ThumbsUp)
-                        ->color('white')
-                }}
+            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                <x-lucide-thumbs-up class="size-4 text-white" />
             </button>
-            <button class="text-2xs flex items-center gap-2 p-2">
-                {{
-                    Icon::make('dislike')
-                        ->icon(LucideIcon::ThumbsDown)
-                        ->color('white')
-                }}
+            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                <x-lucide-thumbs-down class="size-4 text-white" />
             </button>
-            <button class="text-2xs flex items-center gap-2 p-2 font-semibold">Responder</button>
+            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2 font-semibold">Responder</button>
         </div>
     </div>
 </div>
