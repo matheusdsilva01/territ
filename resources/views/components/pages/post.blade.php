@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 ?>
 
+@props([
+    'replies' => [['isReply' => false, 'replies' => [['isReply' => true, 'replies' => null]]], ['isReply' => false, 'replies' => null], ['isReply' => false, 'replies' => null], ['isReply' => false, 'replies' => null]],
+])
+
 <x-layouts.guest>
     <section class="mx-auto flex flex-col gap-11 px-8 py-6">
         <section class="flex flex-col gap-8">
