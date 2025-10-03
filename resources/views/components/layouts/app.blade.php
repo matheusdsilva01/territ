@@ -18,16 +18,10 @@ declare(strict_types=1);
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet" />
-
         @vite('resources/css/app.css')
     </head>
     <body class="font-primary text-text-high bg-elevation-surface-dark min-h-full leading-none">
-        <x-guest-container-layout>
-            {{ $slot }}
-        </x-guest-container-layout>
-        <div
-            class="from-indigo-primary to-app-gradient-end pointer-events-none fixed top-0 left-0 h-full w-full bg-gradient-to-br opacity-[4%]"
-        ></div>
+        {{ $slot }}
         @vite('resources/js/app.js')
     </body>
 </html>
