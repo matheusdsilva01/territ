@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 ?>
 
-@php
-    use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
-    use Filament\Schemas\Components\Icon;
-@endphp
-
 <section class="mx-auto flex flex-col gap-11 px-8 py-6">
     <section class="flex flex-col gap-8">
         <div class="flex gap-3">

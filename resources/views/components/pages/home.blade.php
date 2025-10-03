@@ -3,16 +3,11 @@ declare(strict_types=1);
 
 ?>
 
-@php
-    use CodeWithDennis\FilamentLucideIcons\Enums\LucideIcon;
-    use Filament\Schemas\Components\Icon;
-@endphp
-
 <section class="mx-auto flex flex-col gap-8 p-8">
     <div class="flex flex-col gap-4">
         <h1 class="text-md font-secondary font-semibold">
             Olá,
-            <span class="text-indigo-primary">${{ auth()->user()->username }}</span>
+            <span class="text-indigo-primary">${{ auth()->user()->username ?? 'null' }}</span>
         </h1>
         <p class="text-c-medium">Confira as estatísticas das comunidades que você segue</p>
     </div>
@@ -22,11 +17,7 @@ declare(strict_types=1);
         >
             <div class="flex gap-3">
                 <div class="bg-brand-primary rounded-sm p-2.5">
-                    {{
-                        Icon::make('building')
-                            ->icon(LucideIcon::Building2)
-                            ->color('white')
-                    }}
+                    <x-lucide-building-2 class="size-5 text-white" />
                 </div>
                 <div class="flex flex-col gap-1">
                     <p class="text-c-medium text-2xs">Quantidade de usuários</p>
@@ -39,11 +30,7 @@ declare(strict_types=1);
         >
             <div class="flex gap-3">
                 <div class="bg-lime-primary rounded-sm p-2.5">
-                    {{
-                        Icon::make('building')
-                            ->icon(LucideIcon::Building2)
-                            ->color('white')
-                    }}
+                    <x-lucide-building-2 class="size-5 text-white" />
                 </div>
                 <div class="flex flex-col gap-1">
                     <p class="text-c-medium text-2xs">Quantidade de posts</p>
@@ -56,11 +43,7 @@ declare(strict_types=1);
         >
             <div class="flex gap-3">
                 <div class="bg-indigo-primary rounded-sm p-2.5">
-                    {{
-                        Icon::make('building')
-                            ->icon(LucideIcon::Building2)
-                            ->color('white')
-                    }}
+                    <x-lucide-building-2 class="size-5 text-white" />
                 </div>
                 <div class="flex flex-col gap-1">
                     <p class="text-c-medium text-2xs">Quantidade de replies</p>
@@ -96,29 +79,19 @@ declare(strict_types=1);
                         </div>
                     </div>
                     <div class="flex gap-5">
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('message')
-                                    ->icon(LucideIcon::MessageCircle)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-message-circle class="size-4 text-white" />
                             1
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('like')
-                                    ->icon(LucideIcon::ThumbsUp)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-thumbs-up class="size-4 text-white" />
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2">
-                            {{
-                                Icon::make('dislike')
-                                    ->icon(LucideIcon::ThumbsDown)
-                                    ->color('white')
-                            }}
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                            <x-lucide-thumbs-down class="size-4 text-white" />
                         </button>
-                        <button class="text-2xs flex items-center gap-2 p-2 font-semibold">Responder</button>
+                        <button class="text-2xs flex cursor-pointer items-center gap-2 p-2 font-semibold">
+                            Responder
+                        </button>
                     </div>
                 </div>
             @endfor

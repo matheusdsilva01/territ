@@ -19,7 +19,7 @@ declare(strict_types=1);
     ])
 >
     <div class="flex items-center gap-3">
-        {{ $icon }}
+        <x-dynamic-component :component="$icon" class="size-4" />
         <a href="{{ $href }}" class="leading-xs">
             <span class="absolute inset-0"></span>
             {{ $label }}
