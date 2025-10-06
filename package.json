@@ -37,5 +37,9 @@
             "php vendor/bin/pint",
             "php vendor/bin/rector process"
         ]
+    },
+    "dependencies": {
+        "@alpinejs/persist": "^3.15.0",
+        "alpinejs": "^3.15.0"
     }
 }
