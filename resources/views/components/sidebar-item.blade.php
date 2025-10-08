@@ -19,7 +19,11 @@ declare(strict_types=1);
     ])
 >
     <div class="flex items-center gap-3">
-        <x-dynamic-component :component="$icon" class="size-4" />
+        @if (filter_var($icon, FILTER_VALIDATE_URL))
+            <img src="{{ $icon }}" alt="{{ $label }} icon" class="size-4 object-cover" />
+        @else
+            <x-dynamic-component :component="$icon" class="size-4" />
+        @endif
         <a href="{{ $href }}" class="leading-xs">
             <span class="absolute inset-0"></span>
             {{ $label }}
