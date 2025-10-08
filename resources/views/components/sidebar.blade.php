@@ -23,19 +23,21 @@ declare(strict_types=1);
             </div>
             {{-- sidebar content with title --}}
             <div class="flex flex-col gap-4">
-                <p>Minhas comunidades</p>
-                <x-sidebar-item
-                    label="Auto peça jacaré"
-                    :href="route('community')"
-                    icon="heroicon-o-wrench"
-                    helper="+999"
-                />
-                <x-sidebar-item
-                    label="Costureiras graça e paz"
-                    :href="route('community')"
-                    icon="heroicon-o-scissors"
-                    helper="+999"
-                />
+                @if (! $hasCommunities)
+                    <p class="pl-2 font-semibold">Participe de uma comunidade</p>
+                @else
+                    <p>Minhas comunidades</p>
+                @endif
+                @forelse ($communities as $c)
+                    <x-sidebar-item
+                        :label="$c->title"
+                        :href="route('community', $c->id)"
+                        :icon="$c->icon_img"
+                        :helper="$c->users->count()"
+                    />
+                @empty
+                    
+                @endforelse
             </div>
         </section>
     </section>

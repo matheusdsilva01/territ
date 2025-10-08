@@ -25,6 +25,6 @@ Route::group(['middleware' => [
     Route::get('/login', Login::class)->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', fn () => view('components.pages.home'))->name('home');
-    Route::get('/community', fn () => view('components.pages.community'))->name('community');
+    Route::get('/community/{id}', fn () => view('components.pages.community'))->name('community');
     Route::get('/post', fn () => view('components.pages.post'))->name('post');
 });
