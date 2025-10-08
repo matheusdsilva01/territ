@@ -17,11 +17,12 @@ declare(strict_types=1);
             <x-card-stats color="lime-primary" icon="lucide-building-2" label="Quantidade de posts" value="10000" />
             <x-card-stats color="indigo-primary" icon="lucide-building-2" label="Quantidade de replies" value="10000" />
         </section>
-        <x-content-wrapper title="Veja os últimos posts das comunidades que você segue">
-            @for ($i = 0; $i < 5; $i++)
-                <x-post-item />
-            @endfor
-        </x-content-wrapper>
+        <x-feed
+            :title="auth()->check()
+                ? 'Veja os últimos posts das comunidades que você segue'
+            : 'Veja os posts mais recentes nas comunidades'"
+            :posts="$posts"
+        />
     </section>
 </x-layouts.guest>
 

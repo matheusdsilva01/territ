@@ -37,11 +37,12 @@ declare(strict_types=1);
                 <button class="font-secondary bg-indigo-primary cursor-pointer rounded-lg px-4 py-3">Criar post</button>
             </div>
         </section>
-        <x-content-wrapper title="Veja os últimos posts da comunidade">
-            @for ($i = 0; $i < 5; $i++)
-                <x-post-item />
-            @endfor
-        </x-content-wrapper>
+        <x-feed
+            :title="count($posts) > 0
+                ? 'Veja os últimos posts da comunidade'
+            : 'Esta comunidade ainda não possui Posts ;-;'"
+            :posts="$posts"
+        />
     </section>
 </x-layouts.guest>
 

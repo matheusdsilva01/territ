@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\HomeController;
 use App\Livewire\pages\Login;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -24,7 +26,7 @@ Route::group(['middleware' => [
 ]], function (): void {
     Route::get('/login', Login::class)->name('login');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/', fn () => view('components.pages.home'))->name('home');
-    Route::get('/community/{id}', fn () => view('components.pages.community'))->name('community');
-    Route::get('/post', fn () => view('components.pages.post'))->name('post');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/community/{id}', [CommunityController::class, 'getCommunity'])->name('community');
+    Route::get('/community/{id}/post/{postId}', fn () => view('components.pages.post'))->name('post');
 });
