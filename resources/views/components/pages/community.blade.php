@@ -4,6 +4,26 @@ declare(strict_types=1);
 
 ?>
 
+@php
+    use App\Models\Community;
+
+    function getMembersCount(Community $community): string
+    {
+        $membersCount = $community->users->count();
+        if ($membersCount === 1) {
+            return '1 Membro';
+        }
+
+        $formatted = Number::abbreviate($membersCount);
+
+        if ($membersCount >= 1000) {
+            return "{$formatted} de Membros";
+        }
+
+        return "{$formatted} Membros";
+    }
+@endphp
+
 <x-layouts.guest>
     <section class="mx-auto flex flex-col gap-11 px-8 py-6">
         <section class="flex items-center justify-between gap-8">
@@ -21,20 +41,44 @@ declare(strict_types=1);
                     <div class="flex gap-8">
                         <div class="flex items-center gap-3">
                             <x-lucide-users class="size-5 text-white" />
-                            <p class="leading-xs text-xs">1bi de membros</p>
+                            <p class="leading-xs text-xs">
+                                {{ getMembersCount($community) }}
+                            </p>
                         </div>
                         <div class="flex items-center gap-3">
                             <x-lucide-users class="size-5 text-white" />
-                            <p class="leading-xs text-xs">Criado em Jan, 2025</p>
+                            <p class="leading-xs text-xs">Criado em {{ $community->created_at->format('M, Y') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex gap-8">
-                <button class="font-secondary border-outline-dark cursor-pointer rounded-lg border px-4 py-3">
-                    Entrar
-                </button>
-                <button class="font-secondary bg-indigo-primary cursor-pointer rounded-lg px-4 py-3">Criar post</button>
+                @if ($isMember)
+                    <form method="POST" action="{{ route('community.leave', ['id' => $community->id]) }}">
+                        @csrf
+                        <button
+                            type="submit"
+                            class="font-secondary border-outline-dark cursor-pointer rounded-lg border px-4 py-3"
+                        >
+                            Sair
+                        </button>
+                    </form>
+                @else
+                    <form method="POST" action="{{ route('community.join', ['id' => $community->id]) }}">
+                        @csrf
+                        <button
+                            type="submit"
+                            class="font-secondary border-outline-dark cursor-pointer rounded-lg border px-4 py-3"
+                        >
+                            Entrar
+                        </button>
+                    </form>
+                @endif
+                @if ($isMember)
+                    <button class="font-secondary bg-indigo-primary cursor-pointer rounded-lg px-4 py-3">
+                        Criar post
+                    </button>
+                @endif
             </div>
         </section>
         <x-feed
