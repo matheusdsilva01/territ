@@ -52,4 +52,22 @@ final class CommunityController extends Controller
 
         return redirect()->back();
     }
+
+    public function createComment(Request $request): RedirectResponse
+    {
+        $postId = (string) $request->postId;
+        $content = (string) $request->input('content');
+        if ($content === '' || $content === '0') {
+            return redirect()->back();
+        }
+
+        $user = auth()->user();
+        $post = Post::query()->findOrFail($postId);
+        $post->comments()->create([
+            'author_id' => $user->id,
+            'content' => $content,
+        ]);
+
+        return redirect()->back();
+    }
 }

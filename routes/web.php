@@ -29,6 +29,7 @@ Route::group(['middleware' => [
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/community/{id}', [CommunityController::class, 'getCommunity'])->name('community');
     Route::get('/community/{id}/post/{postId}', [CommunityController::class, 'getPost'])->name('post');
+    Route::post('/community/{id}/post/{postId}/comment/create', [CommunityController::class, 'createComment'])->name('post.comment.create');
     Route::post('/community/{id}/join', [CommunityController::class, 'join'])->middleware('auth')->name('community.join');
     Route::post('/community/{id}/leave', [CommunityController::class, 'leave'])->middleware('auth')->name('community.leave');
 });
