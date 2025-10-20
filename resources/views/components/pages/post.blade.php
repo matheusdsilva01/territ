@@ -23,17 +23,24 @@ declare(strict_types=1);
             <h1 class="text-md leading-xs font-bold">{{ $post->title }}</h1>
             <p class="leading-xs text-c-medium">{{ $post->content }}</p>
         </section>
-        <section class="bg-elevation-01dp border-outline-dark flex flex-col gap-4 rounded-xl border p-4">
+        <form
+            action="{{ route('post.comment.create', ['id' => $community->id, 'postId' => $post->id]) }}"
+            method="POST"
+            class="bg-elevation-01dp border-outline-dark flex flex-col gap-4 rounded-xl border p-4"
+        >
+            @csrf
             <textarea
                 class="focus:ring-indigo-primary focus:ring-offset-elevation-01dp rounded-sm focus:ring-2 focus:ring-offset-4 focus:outline-none"
                 rows="5"
+                name="content"
+                required
                 placeholder="Escreva um comentário..."
             ></textarea>
             <span class="bg-helper-outline h-[1px] w-full"></span>
-            <button class="font-secondary bg-indigo-primary ms-auto cursor-pointer rounded-lg px-8 py-2">
+            <button type="submit" class="font-secondary bg-indigo-primary ms-auto cursor-pointer rounded-lg px-8 py-2">
                 Responder
             </button>
-        </section>
+        </form>
         <x-content-wrapper :title="$comments->count() > 0 ? 'Todas as respostas' : 'Sem comentários'">
             @foreach ($comments as $comment)
                 <x-post-comment :comment="$comment" />
