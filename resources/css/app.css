@@ -9,6 +9,24 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+:root {
+    --app-gradient-end: #2e2190;
+    --helper-outline: #2c2c2d;
+    --elevation-surface: #fbfbff;
+    --elevation-surface-dark: #09090a;
+    --elevation-01dp: #0f0f10;
+    --elevation-02dp: #131314;
+    --outline-dark: #2c2c2d;
+    --text-high: #fdfdfd;
+    --icon-medium: #9c9c9c;
+    --c-medium: #9c9c9c;
+    --indigo-primary: #4f39f6;
+    --brand-primary: #3895ff;
+    --brand-500: #2287ed;
+    --green-500: #00a100;
+    --lime-primary: #a5e412;
+}
+
 @theme {
     --font-primary: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
     --font-secondary: 'Cal Sans', ui-sans-serif, system-ui, sans-serif;
@@ -32,19 +50,19 @@
 
     --spacing-xs: 150%;
 
-    --color-app-gradient-end: #2e2190;
-    --color-helper-outline: #2c2c2d;
-    --color-elevation-surface: #fbfbff;
-    --color-elevation-surface-dark: #09090a;
-    --color-elevation-01dp: #0f0f10;
-    --color-elevation-02dp: #131314;
-    --color-outline-dark: #2c2c2d;
-    --color-text-high: #fdfdfd;
-    --color-icon-medium: #9c9c9c;
-    --color-c-medium: #9c9c9c;
-    --color-indigo-primary: #4f39f6;
-    --color-brand-primary: #3895ff;
-    --color-brand-500: #2287ed;
-    --color-green-500: #00a100;
-    --color-lime-primary: #a5e412;
+    --color-app-gradient-end: var(--app-gradient-end);
+    --color-helper-outline: var(--helper-outline);
+    --color-elevation-surface: var(--elevation-surface);
+    --color-elevation-surface-dark: var(--elevation-surface-dark);
+    --color-elevation-01dp: var(--elevation-01dp);
+    --color-elevation-02dp: var(--elevation-02dp);
+    --color-outline-dark: var(--outline-dark);
+    --color-text-high: var(--text-high);
+    --color-icon-medium: var(--icon-medium);
+    --color-c-medium: var(--c-medium);
+    --color-indigo-primary: var(--indigo-primary);
+    --color-brand-primary: var(--brand-primary);
+    --color-brand-500: var(--brand-500);
+    --color-green-500: var(--green-500);
+    --color-lime-primary: var(--lime-primary);
 }

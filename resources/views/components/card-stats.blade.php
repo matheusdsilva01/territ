@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 <div
     class="max-w-[320px] rounded-xl border border-[var(--color-variant)]/30 bg-gradient-to-r from-[var(--color-variant)]/[8%] to-[var(--color-variant)]/0 p-8"
-    style="--color-variant: {{ 'var(--color-' . $color }})"
+    style="--color-variant: var({{ '--' . $color }})"
 >
     <div class="flex gap-3">
-        <div class="rounded-sm bg-[var(--color-bg)] p-2.5" style="--color-bg: {{ 'var(--color-' . $color }})">
+        <div class="rounded-sm bg-[var(--color-variant)] p-2.5">
             <x-dynamic-component :component="$icon" class="size-5 text-white" />
         </div>
         <div class="flex flex-col gap-1">
