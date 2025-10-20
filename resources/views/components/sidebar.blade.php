@@ -19,7 +19,12 @@ declare(strict_types=1);
         <section class="flex flex-col gap-11">
             {{-- sidebar content --}}
             <div class="flex flex-col gap-4">
-                <x-sidebar-item label="Home" :href="route('home')" icon="lucide-home" />
+                <x-sidebar-item
+                    label="Home"
+                    :href="route('home')"
+                    icon="lucide-home"
+                    :active="request()->is(route('home'))"
+                />
             </div>
             {{-- sidebar content with title --}}
             <div class="flex flex-col gap-4">
@@ -32,6 +37,7 @@ declare(strict_types=1);
                     <x-sidebar-item
                         :label="$c->title"
                         :href="route('community', $c->id)"
+                        :active="str_contains(request()->url(), $c->id)"
                         :icon="$c->icon_img"
                         :helper="$c->users->count()"
                     />

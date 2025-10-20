@@ -9,13 +9,13 @@ declare(strict_types=1);
     'href' => '#',
     'icon' => null,
     'helper' => null,
+    'active' => false,
 ])
 
 <div
     @class([
         'hover:bg-indigo-primary/5 relative isolate flex cursor-pointer items-center justify-between rounded-xl p-4 transition-all',
-        'border-indigo-primary/30 from-indigo-primary/[8%] to-indigo-primary/0 border bg-gradient-to-r hover:bg-inherit' =>
-            request()->url() === $href,
+        'border-indigo-primary/30 from-indigo-primary/[8%] to-indigo-primary/0 border bg-gradient-to-r hover:bg-inherit' => $active,
     ])
 >
     <div class="flex items-center gap-3">

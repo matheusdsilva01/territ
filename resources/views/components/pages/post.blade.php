@@ -4,35 +4,24 @@ declare(strict_types=1);
 
 ?>
 
-@props([
-    'replies' => [['isReply' => false, 'replies' => [['isReply' => true, 'replies' => null]]], ['isReply' => false, 'replies' => null], ['isReply' => false, 'replies' => null], ['isReply' => false, 'replies' => null]],
-])
-
 <x-layouts.guest>
     <section class="mx-auto flex flex-col gap-11 px-8 py-6">
         <section class="flex flex-col gap-8">
             <div class="flex gap-3">
-                <img
-                    src="https://cdn-icons-png.flaticon.com/32/10851/10851235.png"
-                    alt="logo community"
-                    class="size-10 rounded-full"
-                />
+                <img src="{{ $community->icon_img }}" alt="logo community" class="size-10 rounded-full" />
                 <div class="text-2xs flex flex-col gap-1">
                     <div class="flex items-center gap-4">
-                        <p class="font-bold">@nextur.design</p>
+                        <p class="font-bold">{{ '@' . $post->user->username }}</p>
                         <span class="bg-c-medium size-1 rounded-full"></span>
-                        <p class="text-c-medium">now</p>
+                        <p class="text-c-medium">
+                            {{ $post->created_at->diffForHumans() }}
+                        </p>
                     </div>
-                    <h4 class="text-brand-primary font-bold">/Flamengo</h4>
+                    <h4 class="text-brand-primary font-bold">/{{ $community->title }}</h4>
                 </div>
             </div>
-            <h1 class="text-md leading-xs font-bold">How I learn any type of new technology (As a Senior Developer)</h1>
-            <p class="leading-xs text-c-medium">
-                Recently, I had a task of learning a new tool that I had never used or seen anything related to, and I
-                thought: why not write about how I learned it? This is the kind of article that teaches you to learn
-                things from a different perspective. Not the best way, but you can reuse some of the concepts written
-                here.
-            </p>
+            <h1 class="text-md leading-xs font-bold">{{ $post->title }}</h1>
+            <p class="leading-xs text-c-medium">{{ $post->content }}</p>
         </section>
         <section class="bg-elevation-01dp border-outline-dark flex flex-col gap-4 rounded-xl border p-4">
             <textarea
@@ -45,9 +34,9 @@ declare(strict_types=1);
                 Responder
             </button>
         </section>
-        <x-content-wrapper title="Todas as respostas">
-            @foreach ($replies as $reply)
-                <x-post-comment :replies="$reply['replies']" :is-reply="false" />
+        <x-content-wrapper :title="$comments->count() > 0 ? 'Todas as respostas' : 'Sem comentários'">
+            @foreach ($comments as $comment)
+                <x-post-comment :comment="$comment" />
             @endforeach
         </x-content-wrapper>
     </section>

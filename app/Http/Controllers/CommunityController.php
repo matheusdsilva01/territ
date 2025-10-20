@@ -22,6 +22,17 @@ final class CommunityController extends Controller
         return view('components.pages.community', ['posts' => $posts, 'community' => $community, 'isMember' => $isMember]);
     }
 
+    public function getPost(Request $request): View
+    {
+        $id = (string) $request->id;
+        $postId = (string) $request->postId;
+        $community = Community::query()->find($id);
+        $post = Post::query()->find($postId);
+        $comments = $post->comments()->whereNull('comment_parent_id')->get();
+
+        return view('components.pages.post', ['community' => $community, 'post' => $post, 'comments' => $comments]);
+    }
+
     public function join(Request $request): RedirectResponse
     {
         $id = (string) $request->id;
