@@ -54,7 +54,7 @@ declare(strict_types=1);
             </div>
             <div class="flex gap-8">
                 @if ($isMember)
-                    <form method="POST" action="{{ route('community.leave', ['id' => $community->id]) }}">
+                    <form method="POST" action="{{ route('community.leave', ['community' => $community->id]) }}">
                         @csrf
                         <button
                             type="submit"
@@ -64,7 +64,7 @@ declare(strict_types=1);
                         </button>
                     </form>
                 @else
-                    <form method="POST" action="{{ route('community.join', ['id' => $community->id]) }}">
+                    <form method="POST" action="{{ route('community.join', ['community' => $community->id]) }}">
                         @csrf
                         <button
                             type="submit"

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 ?>
+
 <main class="flex h-dvh">
     <form
         wire:submit="authenticate"
@@ -35,4 +36,5 @@ declare(strict_types=1);
         </button>
     </form>
 </main>
-<?php 
+
+<?php

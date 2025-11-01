@@ -12,7 +12,7 @@ declare(strict_types=1);
         </div>
         <div class="flex flex-col gap-2">
             <a
-                href="{{ route('post', ['id' => $post->community_id, 'postId' => $post->id]) }}"
+                href="{{ route('post', ['community' => $post->community_id, 'post' => $post->id]) }}"
                 class="font-secondary text-sm"
             >
                 <span class="absolute inset-0"></span>
