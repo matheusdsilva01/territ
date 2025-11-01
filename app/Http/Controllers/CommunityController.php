@@ -4,65 +4,50 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCommentRequest;
 use App\Models\Community;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 final class CommunityController extends Controller
 {
-    public function getCommunity(Request $request): View
+    public function getCommunity(Community $community): View
     {
-        $id = (string) $request->id;
-        $posts = Post::query()->where('community_id', $id)->get();
-        $community = Community::query()->find($id);
-        $isMember = auth()->user()->communities->contains($community);
+        $posts = $community->posts()->get();
+
+        $isMember = auth()->user()?->communities->contains($community) ?? false;
 
         return view('components.pages.community', ['posts' => $posts, 'community' => $community, 'isMember' => $isMember]);
     }
 
-    public function getPost(Request $request): View
+    public function getPost(Community $community, Post $post): View
     {
-        $id = (string) $request->id;
-        $postId = (string) $request->postId;
-        $community = Community::query()->find($id);
-        $post = Post::query()->find($postId);
         $comments = $post->comments()->whereNull('comment_parent_id')->get();
 
         return view('components.pages.post', ['community' => $community, 'post' => $post, 'comments' => $comments]);
     }
 
-    public function join(Request $request): RedirectResponse
+    public function join(Community $community): RedirectResponse
     {
-        $id = (string) $request->id;
-        $community = Community::query()->findOrFail($id);
         $user = auth()->user();
         $user->communities()->attach($community);
 
         return redirect()->back();
     }
 
-    public function leave(Request $request): RedirectResponse
+    public function leave(Community $community): RedirectResponse
     {
-        $id = (string) $request->id;
-        $community = Community::query()->findOrFail($id);
         $user = auth()->user();
         $user->communities()->detach($community);
 
         return redirect()->back();
     }
 
-    public function createComment(Request $request): RedirectResponse
+    public function createComment(CreateCommentRequest $request, Post $post): RedirectResponse
     {
-        $postId = (string) $request->postId;
-        $content = (string) $request->input('content');
-        if ($content === '' || $content === '0') {
-            return redirect()->back();
-        }
-
+        $content = $request->input('content');
         $user = auth()->user();
-        $post = Post::query()->findOrFail($postId);
         $post->comments()->create([
             'author_id' => $user->id,
             'content' => $content,
