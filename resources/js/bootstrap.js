@@ -67,7 +67,7 @@ document.addEventListener('alpine:init', () => {
         },
     });
 });
-
-Alpine.start();
-
-window.Alpine = Alpine;
+if (!window.Alpine) {
+    window.Alpine = Alpine;
+    Alpine.start();
+}
