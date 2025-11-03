@@ -29,7 +29,10 @@ Route::group(['middleware' => [
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/community/{community}', [CommunityController::class, 'getCommunity'])->name('community');
     Route::get('/community/{community}/post/{post}', [CommunityController::class, 'getPost'])->name('post');
-    Route::post('/community/{community}/post/{post}/comment/create', [CommunityController::class, 'createComment'])->name('post.comment.create');
-    Route::post('/community/{community}/join', [CommunityController::class, 'join'])->middleware('auth')->name('community.join');
-    Route::post('/community/{community}/leave', [CommunityController::class, 'leave'])->middleware('auth')->name('community.leave');
+    Route::middleware(['auth'])->group(function (): void {
+        Route::post('/community/{community}/post/{post}/comment/create', [CommunityController::class, 'createComment'])->name('post.comment.create');
+        Route::post('/community/{community}/join', [CommunityController::class, 'join'])->name('community.join');
+        Route::post('/community/{community}/leave', [CommunityController::class, 'leave'])->name('community.leave');
+        Route::post('/community/{community}/post/{post}/comment/{comment}/like', [CommunityController::class, 'likeComment'])->name('post.comment.like');
+    });
 });

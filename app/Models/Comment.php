@@ -5,15 +5,19 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Database\Factories\CommentFactory;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 final class Comment extends Model
 {
     /** @use HasFactory<CommentFactory> */
     use HasFactory;
+
+    use HasUuids;
 
     protected $fillable = [
         'content',
@@ -44,5 +48,11 @@ final class Comment extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(self::class, 'comment_parent_id');
+    }
+
+    /** @return MorphMany<Like, $this> */
+    public function likes(): MorphMany
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 }

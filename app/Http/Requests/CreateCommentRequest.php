@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
+use App\Models\Community;
 use App\Models\Post;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,16 +15,12 @@ final class CreateCommentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if (! auth()->check()) {
-            return false;
-        }
-
-        /** @var string $community */
+        /** @var Community $community */
         $community = $this->community;
         /** @var Post $post */
         $post = $this->post;
 
-        return $post->community_id === $community;
+        return $post->community_id === $community->id;
     }
 
     /**
