@@ -38,9 +38,16 @@ declare(strict_types=1);
                 <x-lucide-message-circle class="size-4 text-white" />
                 {{ $comment->comments->count() }}
             </span>
-            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
-                <x-lucide-thumbs-up class="size-4 text-white" />
-            </button>
+            <form
+                method="POST"
+                action="{{ route('post.comment.like', ['community' => $comment->post->community_id, 'post' => $comment->post->id, 'comment' => $comment->id]) }}"
+            >
+                @csrf
+                <button type="submit" class="text-2xs flex cursor-pointer items-center gap-2 p-2">
+                    <x-lucide-thumbs-up class="size-4 text-white" />
+                    {{ $comment->likes->count() }}
+                </button>
+            </form>
             <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
                 <x-lucide-thumbs-down class="size-4 text-white" />
             </button>
