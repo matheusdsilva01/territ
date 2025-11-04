@@ -17,6 +17,7 @@ final class CreateCommentRequest extends FormRequest
     {
         return [
             'content' => ['required', 'string'],
+            'comment_parent_id' => ['string', 'exists:comments,id'],
         ];
     }
 }

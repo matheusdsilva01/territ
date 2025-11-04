@@ -13,7 +13,7 @@ declare(strict_types=1);
             ></span>
         @endif
     </div>
-    <div class="flex w-full flex-col gap-1">
+    <div x-data="{ commentOpen: false }" class="flex w-full flex-col gap-1">
         <div class="flex items-center gap-3">
             <p class="font-secondary">{{ $comment->author->username }}</p>
             <p class="text-3xs text-c-medium font-semibold">{{ $comment->created_at->diffForHumans() }}</p>
@@ -48,8 +48,33 @@ declare(strict_types=1);
             <button class="text-2xs flex cursor-pointer items-center gap-2 p-2">
                 <x-lucide-thumbs-down class="size-4 text-white" />
             </button>
-            <button class="text-2xs flex cursor-pointer items-center gap-2 p-2 font-semibold">Responder</button>
+            <button
+                @click="commentOpen = !commentOpen"
+                class="text-2xs flex cursor-pointer items-center gap-2 p-2 font-semibold"
+            >
+                Responder
+            </button>
         </div>
+        <form
+            x-show="commentOpen"
+            action="{{ route('post.comment.create', ['post' => $comment->post_id]) }}"
+            method="POST"
+            class="bg-elevation-01dp border-outline-dark flex flex-col gap-4 rounded-xl border p-4"
+        >
+            @csrf
+            <input type="hidden" name="comment_parent_id" value="{{ $comment->id }}" />
+            <textarea
+                class="focus:ring-indigo-primary focus:ring-offset-elevation-01dp rounded-sm focus:ring-2 focus:ring-offset-4 focus:outline-none"
+                rows="5"
+                name="content"
+                required
+                placeholder="Escreva um comentário..."
+            ></textarea>
+            <span class="bg-helper-outline h-[1px] w-full"></span>
+            <button type="submit" class="font-secondary bg-indigo-primary ms-auto cursor-pointer rounded-lg px-8 py-2">
+                Responder
+            </button>
+        </form>
     </div>
 </div>
 @if ($comment->comments->count() > 0)
