@@ -24,7 +24,7 @@ declare(strict_types=1);
             <p class="leading-xs text-c-medium">{{ $post->content }}</p>
         </section>
         <form
-            action="{{ route('post.comment.create', ['community' => $community->id, 'post' => $post->id]) }}"
+            action="{{ route('post.comment.create', ['post' => $post->id]) }}"
             method="POST"
             class="bg-elevation-01dp border-outline-dark flex flex-col gap-4 rounded-xl border p-4"
         >

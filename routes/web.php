@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Livewire\Pages\Login;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -30,9 +32,9 @@ Route::group(['middleware' => [
     Route::get('/community/{community}', [CommunityController::class, 'getCommunity'])->name('community');
     Route::get('/community/{community}/post/{post}', [CommunityController::class, 'getPost'])->name('post');
     Route::middleware(['auth'])->group(function (): void {
-        Route::post('/community/{community}/post/{post}/comment/create', [CommunityController::class, 'createComment'])->name('post.comment.create');
         Route::post('/community/{community}/join', [CommunityController::class, 'join'])->name('community.join');
         Route::post('/community/{community}/leave', [CommunityController::class, 'leave'])->name('community.leave');
-        Route::post('/community/{community}/post/{post}/comment/{comment}/like', [CommunityController::class, 'likeComment'])->name('post.comment.like');
+        Route::post('/post/{post}/comment/create', [PostController::class, 'createComment'])->name('post.comment.create');
+        Route::post('/comment/{comment}/like', [CommentController::class, 'likeComment'])->name('post.comment.like');
     });
 });

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCommentRequest;
-use App\Models\Comment;
 use App\Models\Community;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
@@ -41,29 +39,6 @@ final class CommunityController extends Controller
     {
         $user = auth()->user();
         $user->communities()->detach($community);
-
-        return redirect()->back();
-    }
-
-    public function createComment(CreateCommentRequest $request, Community $community, Post $post): RedirectResponse
-    {
-        $content = $request->input('content');
-        $id = auth()->id();
-        $post->comments()->create([
-            'author_id' => $id,
-            'content' => $content,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function likeComment(Community $community, Post $post, Comment $comment): RedirectResponse
-    {
-        $id = auth()->id();
-
-        $comment->likes()->create([
-            'user_id' => $id,
-        ]);
 
         return redirect()->back();
     }
