@@ -39,7 +39,7 @@ declare(strict_types=1);
                         :href="route('community', $c->id)"
                         :active="str_contains(request()->url(), $c->id)"
                         :icon="$c->icon_img"
-                        :helper="$c->users->count()"
+                        :helper="$c->users_count"
                     />
                 @empty
                     
