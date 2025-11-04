@@ -16,8 +16,6 @@ test('should like a comment', function (): void {
     $anotherUser = User::factory()->create();
 
     $response = $this->actingAs($anotherUser)->post(route('post.comment.like', [
-        'post' => $post->id,
-        'community' => $community->id,
         'comment' => $comment->id,
     ]));
 
