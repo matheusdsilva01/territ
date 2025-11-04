@@ -18,11 +18,11 @@ final class Sidebar extends Component
 
     public function __construct()
     {
-        if (auth()->check() || auth()->user()?->communities()->exists()) {
+        if (auth()->check() && auth()->user()?->communities()->exists()) {
             $this->hasCommunities = true;
-            $this->communities = auth()->user()->communities()->latest('pivot_created_at')->get();
+            $this->communities = auth()->user()->communities()->withCount('users')->latest()->get();
         } else {
-            $this->communities = Community::query()->latest()->limit(6)->get();
+            $this->communities = Community::query()->withCount('users')->take(6)->get();
         }
     }
 
