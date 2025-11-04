@@ -41,7 +41,7 @@ declare(strict_types=1);
                 Responder
             </button>
         </form>
-        <x-content-wrapper :title="$comments->count() > 0 ? 'Todas as respostas' : 'Sem comentários'">
+        <x-content-wrapper :title="sizeof($comments->toArray()) > 0 ? 'Todas as respostas' : 'Sem comentários'">
             @foreach ($comments as $comment)
                 <x-post-comment :comment="$comment" />
             @endforeach

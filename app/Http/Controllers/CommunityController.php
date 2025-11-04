@@ -22,7 +22,7 @@ final class CommunityController extends Controller
 
     public function getPost(Community $community, Post $post): View
     {
-        $comments = $post->comments()->whereNull('comment_parent_id')->get();
+        $comments = $post->comments()->whereNull('comment_parent_id')->with('author')->latest()->get();
 
         return view('components.pages.post', ['community' => $community, 'post' => $post, 'comments' => $comments]);
     }
