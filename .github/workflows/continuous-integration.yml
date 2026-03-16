@@ -54,7 +54,7 @@ jobs:
           tools: composer:v2
 
       - name: Install composer dependencies
-        uses: ramsey/composer-install@3cf229dc2919194e9e36783941438d17239e8520 # v3.1.1
+        uses: ramsey/composer-install@a8d0d959dab41457692a5e2041bd9b757a119e3f # v3.2.1
         with:
           composer-options: ${{ steps.setup.outputs.COMPOSER_FLAGS }}
           custom-cache-key: ${{ steps.cache.outputs.key }}
